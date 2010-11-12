@@ -15,25 +15,16 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
-
-#include <QMainWindow>
-
-namespace Ui {
-    class MainWindow;
-}
-
-class MainWindow : public QMainWindow
+#ifndef AGFGRAPHICSVIEW_H
+#define AGFGRAPHICSVIEW_H
+#include <QGraphicsView>
+/**
+ * Класс виджета для рисования.
+ */
+class AGFGraphicsView: public QGraphicsView
 {
-    Q_OBJECT
-
 public:
-    explicit MainWindow(QWidget *parent = 0);
-    ~MainWindow();
-
-private:
-    Ui::MainWindow *ui;
+    AGFGraphicsView();
 };
 
-#endif // MAINWINDOW_H
+#endif // AGFGRAPHICSVIEW_H

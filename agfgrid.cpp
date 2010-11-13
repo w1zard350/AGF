@@ -53,6 +53,26 @@ void AGFgrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, Q
     if(quartersVisible[1]) drawGrid(secondQ, painter);
     if(quartersVisible[2]) drawGrid(thirdQ, painter);
     if(quartersVisible[3]) drawGrid(fourthQ, painter);
+
+    painter->setPen(axePen);
+    painter->drawLine(xleft, yc, xright, yc); // ось X
+    painter->drawLine(xc, ybottom, xc, ytop); // ось Y
+
+    // стрелочка X
+    QPointF points[3];
+    points[0] = QPointF(xright, yc);
+    points[1] = QPointF(xright-10, yc-2);
+    points[2] = QPointF(xright-10, yc+2);
+    painter->drawPolygon(points, 3, Qt::WindingFill);
+
+    // стрелочка Y
+    points[0] = QPointF(xc, ytop);
+    points[1] = QPointF(xc-2, ytop-10);
+    points[2] = QPointF(xc+2, ytop-10);
+    painter->drawPolygon(points, 3, Qt::WindingFill);
+
+    painter->drawText(xright-10, yc+15, "x");
+    painter->drawText(xc+5, ytop-10, "y");
 }
 
 void AGFgrid::drawGrid(QRectF area, QPainter* painter) {

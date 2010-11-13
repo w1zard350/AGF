@@ -15,16 +15,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef AGFGRAPHICSVIEW_H
-#define AGFGRAPHICSVIEW_H
-#include <QGraphicsView>
+#ifndef AGFGRAPHICSITEM_H
+#define AGFGRAPHICSITEM_H
+#include <QGraphicsItem>
 /**
- * Класс виджета для рисования.
+ * Абстрактный класс объекта рисования. Наследуя его вы создаете новую фигуру.
+ * Предназначен для управления базовыми функциями для всех объектов рисования.
  */
-class AGFGraphicsView: public QGraphicsView
+class AGFgraphicsItem: public QGraphicsItem
 {
 public:
-    AGFGraphicsView(QWidget* parent = 0);
+    AGFgraphicsItem(QGraphicsItem* parent = 0);
 };
 
-#endif // AGFGRAPHICSVIEW_H
+#endif // AGFGRAPHICSITEM_H

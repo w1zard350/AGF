@@ -15,16 +15,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef AGFGRAPHICSVIEW_H
-#define AGFGRAPHICSVIEW_H
-#include <QGraphicsView>
-/**
- * Класс виджета для рисования.
- */
-class AGFGraphicsView: public QGraphicsView
+#include "agfgrid.h"
+#include <QGraphicsScene>
+AGFgrid::AGFgrid(QGraphicsItem* parent)
 {
-public:
-    AGFGraphicsView(QWidget* parent = 0);
-};
+    Q_UNUSED(parent);
+}
 
-#endif // AGFGRAPHICSVIEW_H
+void AGFgrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget)
+{
+    Q_UNUSED(painter);
+    Q_UNUSED(option);
+    Q_UNUSED(widget);
+}
+
+QRectF AGFgrid::boundingRect() const
+{
+    return scene()->sceneRect();
+}

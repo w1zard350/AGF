@@ -16,7 +16,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item>
-     <widget class="agfgraphicsview" name="graphicsView"/>
+     <widget class="AGFGraphicsView" name="graphicsView"/>
     </item>
    </layout>
   </widget>
@@ -43,7 +43,7 @@
  <layoutdefault spacing="6" margin="11"/>
  <customwidgets>
   <customwidget>
-   <class>agfgraphicsview</class>
+   <class>AGFGraphicsView</class>
    <extends>QGraphicsView</extends>
    <header>agfgraphicsview.h</header>
   </customwidget>

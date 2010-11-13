@@ -15,16 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef AGFGRAPHICSVIEW_H
-#define AGFGRAPHICSVIEW_H
-#include <QGraphicsView>
-/**
- * Класс виджета для рисования.
- */
-class AGFGraphicsView: public QGraphicsView
+#include "agfgraphicsitem.h"
+AGFgraphicsItem::AGFgraphicsItem(QGraphicsItem* parent)
 {
-public:
-    AGFGraphicsView(QWidget* parent = 0);
-};
-
-#endif // AGFGRAPHICSVIEW_H
+    Q_UNUSED(parent);
+}

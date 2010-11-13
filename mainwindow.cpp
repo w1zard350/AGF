@@ -17,12 +17,16 @@
  */
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "agfgrid.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    // конфигурируем сетку
+    AGFgrid* grid = new AGFgrid();
 }
 
 MainWindow::~MainWindow()

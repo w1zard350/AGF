@@ -17,6 +17,12 @@
  */
 #include "agfgraphicsview.h"
 
-AGFGraphicsView::AGFGraphicsView()
+AGFGraphicsView::AGFGraphicsView(QWidget* parent)
 {
+    Q_UNUSED(parent);
+    // создаем и настраиваем сцену
+    QGraphicsScene* scene = new QGraphicsScene();
+    scene->setSceneRect(QRectF(0, 0, width(), height()));
+    setScene(scene);
 }
+

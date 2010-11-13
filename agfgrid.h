@@ -15,16 +15,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef AGFGRAPHICSVIEW_H
-#define AGFGRAPHICSVIEW_H
-#include <QGraphicsView>
+#ifndef AGFGRID_H
+#define AGFGRID_H
+#include "agfgraphicsitem.h"
 /**
- * Класс виджета для рисования.
+ * Объект для рисования - сетка (grid).
  */
-class AGFGraphicsView: public QGraphicsView
+class AGFgrid: public AGFgraphicsItem
 {
 public:
-    AGFGraphicsView(QWidget* parent = 0);
+    AGFgrid(QGraphicsItem* parent = 0);
+
+    //--------------------------------------------------------------------------------//
+    /**
+     * Событие полной перерисовки объекта
+     */
+    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+    /**
+     * Определяет прямоугольник, в котором производиться рисование
+     */
+    QRectF boundingRect() const;
 };
 
-#endif // AGFGRAPHICSVIEW_H
+#endif // AGFGRID_H

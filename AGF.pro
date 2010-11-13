@@ -12,9 +12,13 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    agfgraphicsview.cpp
+    agfgraphicsview.cpp \
+    agfgrid.cpp \
+    agfgraphicsitem.cpp
 
 HEADERS  += mainwindow.h \
-    agfgraphicsview.h
+    agfgraphicsview.h \
+    agfgrid.h \
+    agfgraphicsitem.h
 
 FORMS    += mainwindow.ui

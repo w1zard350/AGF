@@ -26,6 +26,8 @@ AGFgrid::AGFgrid(QGraphicsItem* parent): AGFgraphicsItem(parent) {
     setCellNumX(10);
     setCellNumY(10);
     setCellSize(10);
+    setPenAxe(QPen(Qt::black, 2));
+    setPenGrid(QPen(Qt::gray, 1));
 }
 
 void AGFgrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {

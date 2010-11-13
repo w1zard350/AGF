@@ -14,11 +14,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     agfgraphicsview.cpp \
     agfgrid.cpp \
-    agfgraphicsitem.cpp
+    agfgraphicsitem.cpp \
+    agfshape.cpp
 
 HEADERS  += mainwindow.h \
     agfgraphicsview.h \
     agfgrid.h \
-    agfgraphicsitem.h
+    agfgraphicsitem.h \
+    agfshape.h
 
 FORMS    += mainwindow.ui

@@ -18,18 +18,22 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "agfgrid.h"
+#include "agfshape.h"
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
 
     // конфигурируем сетку
-    AGFgrid* grid = new AGFgrid();
-    grid->setPenAxe(QPen(Qt::black, 2));
-    grid->setPenGrid(QPen(Qt::gray, 1));
+    grid = new AGFgrid();
     ui->graphicsView->addItem(grid);
+
+    // конфигурируем фигуру
+    shape = new AGFshape();
+    ui->graphicsView->addItem(shape);
 }
 
 MainWindow::~MainWindow() {
     delete ui;
     delete grid;
+    delete shape;
 }

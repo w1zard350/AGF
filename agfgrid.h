@@ -38,6 +38,11 @@ protected:
      * @var Размер ячейки сетки
      */
     int cellSize;
+    /**
+     * @var Перо для осей и для сетки
+     */
+    QPen axePen;
+    QPen gridPen;
 public:
     AGFgrid(QGraphicsItem* parent = 0);
 
@@ -64,6 +69,8 @@ public:
     void setCellNumX(int value);
     void setCellNumY(int value);
     void setCellSize(int value);
+    void setPenAxe(QPen value);
+    void setPenGrid(QPen value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get
@@ -72,6 +79,8 @@ public:
     int getCellNumX() const;
     int getCellNumY() const;
     int getCellSize() const;
+    QPen getPenAxe() const;
+    QPen getPenGrid() const;
 };
 
 #endif // AGFGRID_H

@@ -56,6 +56,7 @@ void AGFgrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, Q
 }
 
 void AGFgrid::drawGrid(QRectF area, QPainter* painter) {
+    painter->setPen(gridPen);
     // вертикальные полосы
     for(qreal x=area.left(); x <= area.right(); x += cellSize) {
         painter->drawLine(x, area.bottom(), x, area.top());
@@ -94,6 +95,14 @@ void AGFgrid::setCellSize(int value) {
     if(value > 0) cellSize = value;
     else cellSize = 0;
 }
+
+void AGFgrid::setPenAxe(QPen value) {
+    axePen = value;
+}
+
+void AGFgrid::setPenGrid(QPen value) {
+    gridPen = value;
+}
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей
@@ -115,4 +124,12 @@ int AGFgrid::getCellNumY() const {
 
 int AGFgrid::getCellSize() const {
     return cellSize;
+}
+
+QPen AGFgrid::getPenAxe() const {
+    return axePen;
+}
+
+QPen AGFgrid::getPenGrid() const {
+    return gridPen;
 }

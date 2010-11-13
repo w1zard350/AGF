@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
 
     // конфигурируем сетку
     AGFgrid* grid = new AGFgrid();
+    grid->setPenAxe(QPen(Qt::black, 2));
+    grid->setPenGrid(QPen(Qt::gray, 1));
     ui->graphicsView->addItem(grid);
 }
 

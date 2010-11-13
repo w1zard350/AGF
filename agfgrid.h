@@ -17,12 +17,27 @@
  */
 #ifndef AGFGRID_H
 #define AGFGRID_H
+#include <QPainter>
 #include "agfgraphicsitem.h"
 /**
  * Объект для рисования - сетка (grid).
  */
 class AGFgrid: public AGFgraphicsItem
 {
+protected:
+    /**
+     * @var Массив параметров видимости координатных четвертей
+     */
+    bool quartersVisible[4];
+    /**
+     * @var Количество делений сетки по X и Y
+     */
+    int cellNumX;
+    int cellNumY;
+    /**
+     * @var Размер ячейки сетки
+     */
+    int cellSize;
 public:
     AGFgrid(QGraphicsItem* parent = 0);
 
@@ -35,6 +50,28 @@ public:
      * Определяет прямоугольник, в котором производиться рисование
      */
     QRectF boundingRect() const;
+    /**
+     * Рисует сетку
+     * @param area - прямоугольная область рисования
+     * @param painter - объект, который выполняет собственно рисование
+     */
+    void drawGrid(QRectF area, QPainter* painter);
+    //--------------------------------------------------------------------------------//
+    /**
+     * Методы-аксессоры set
+     */
+    void setQuarterVisible(int num, bool value);
+    void setCellNumX(int value);
+    void setCellNumY(int value);
+    void setCellSize(int value);
+    //--------------------------------------------------------------------------------//
+    /**
+     * Методы-аксессоры get
+     */
+    bool getQuarterVisible(int num) const;
+    int getCellNumX() const;
+    int getCellNumY() const;
+    int getCellSize() const;
 };
 
 #endif // AGFGRID_H

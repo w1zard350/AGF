@@ -16,13 +16,27 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "agfgraphicsview.h"
-
-AGFGraphicsView::AGFGraphicsView(QWidget* parent)
-{
+#include "agfgraphicsitem.h"
+AGFgraphicsView::AGFgraphicsView(QWidget* parent) {
     Q_UNUSED(parent);
     // создаем и настраиваем сцену
     QGraphicsScene* scene = new QGraphicsScene();
-    scene->setSceneRect(QRectF(0, 0, width(), height()));
     setScene(scene);
+    reconfigure();
+}
+
+void AGFgraphicsView::addItem(AGFgraphicsItem* item) {
+    item->setGraphicsView(this);
+    scene()->addItem(item);
+}
+
+void AGFgraphicsView::resizeEvent(QResizeEvent* event) {
+    Q_UNUSED(event);
+    reconfigure();
+    scene()->update();
+}
+
+void AGFgraphicsView::reconfigure() {
+    scene()->setSceneRect(QRectF(0, 0, width(), height()));
 }
 

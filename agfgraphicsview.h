@@ -18,13 +18,28 @@
 #ifndef AGFGRAPHICSVIEW_H
 #define AGFGRAPHICSVIEW_H
 #include <QGraphicsView>
+#include "agfgrid.h"
 /**
  * Класс виджета для рисования.
  */
-class AGFGraphicsView: public QGraphicsView
+class AGFgraphicsView: public QGraphicsView
 {
 public:
-    AGFGraphicsView(QWidget* parent = 0);
+    AGFgraphicsView(QWidget* parent = 0);
+
+    /**
+     * Добавляет новый элемент (объект для прорисовки) в сцену
+     */
+    void addItem(AGFgraphicsItem* item);
+    /**
+     * Пересчитывает параметры сцены и вносит изменения в виджет для рисования View
+     */
+    void reconfigure();
+    //--------------------------------------------------------------------------------//
+    /**
+     * События
+     */
+    void resizeEvent(QResizeEvent* event);
 };
 
 #endif // AGFGRAPHICSVIEW_H

@@ -16,7 +16,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "agfgraphicsitem.h"
-AGFgraphicsItem::AGFgraphicsItem(QGraphicsItem* parent)
-{
-    Q_UNUSED(parent);
+AGFgraphicsItem::AGFgraphicsItem(QGraphicsItem* parent): QGraphicsItem(parent) {
+    setCenter(QPointF(0,0));
 }
+
+//--------------------------------------------------------------------------------//
+/**
+ * Методы-аксессоры set для полей
+ */
+void AGFgraphicsItem::setGraphicsView(AGFgraphicsView* value) {
+    this->view = value;
+}
+
+void AGFgraphicsItem::setCenter(QPointF value)
+{
+    this->center = value;
+}
+
+//--------------------------------------------------------------------------------//
+/**
+ * Методы-аксессоры get для полей
+ */
+AGFgraphicsView* AGFgraphicsItem::getGraphicsView() const {
+    return view;
+}
+
+QPointF AGFgraphicsItem::getCenter() const {
+    return center;
+}
+
+

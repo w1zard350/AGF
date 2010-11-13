@@ -23,9 +23,7 @@
 namespace Ui {
     class MainWindow;
 }
-class AGFdraft;
 class AGFgrid;
-class AGFrose;
 /**
  * Класс главного окна приложения, в котором содержиться виджет рисования
  */

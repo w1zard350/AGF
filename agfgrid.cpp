@@ -59,6 +59,8 @@ void AGFgrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, Q
     painter->setPen(axePen);
     painter->drawLine(tc(xleft, yc), tc(xright, yc)); // ось X
     painter->drawLine(tc(xc, ybottom), tc(xc, ytop)); // ось Y
+    painter->drawLine(tc(xc, yc), tc(xright, yc)); // ось X
+    painter->drawLine(tc(xc, yc), tc(xc, ytop)); // ось Y
 
     // стрелочка X
     QPointF points[3];

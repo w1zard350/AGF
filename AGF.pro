@@ -17,7 +17,8 @@ SOURCES += main.cpp\
     agfgraphicsitem.cpp \
     agfshape.cpp \
     affine.cpp \
-    euclidean.cpp
+    euclidean.cpp \
+    projective.cpp
 
 HEADERS  += mainwindow.h \
     agfgraphicsview.h \
@@ -25,6 +26,7 @@ HEADERS  += mainwindow.h \
     agfgraphicsitem.h \
     agfshape.h \
     affine.h \
-    euclidean.h
+    euclidean.h \
+    projective.h
 
 FORMS    += mainwindow.ui

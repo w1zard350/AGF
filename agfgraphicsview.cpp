@@ -19,6 +19,7 @@
 #include "agfgraphicsitem.h"
 #include "affine.h"
 #include "euclidean.h"
+#include "projective.h"
 #include <cmath>
 using namespace std;
 AGFgraphicsView::AGFgraphicsView(QWidget* parent) {
@@ -29,6 +30,7 @@ AGFgraphicsView::AGFgraphicsView(QWidget* parent) {
     reconfigure();
     affine = new Affine();
     euclidean = new Euclidean();
+    projective = new Projective();
 }
 
 void AGFgraphicsView::addItem(AGFgraphicsItem* item) {
@@ -56,6 +58,9 @@ QPointF AGFgraphicsView::tc(QPointF point) {
     point = affine->scale(point);
     point = affine->transform(point);
 
+    // проективные преобразования
+    point = projective->transform(point);
+
     // преобразование математической (мировой) системы координат (МСК) в экранную систему координат (ЭСК)
     point.setX(point.x() + width()/2);
     point.setY(-point.y() + height()/2);
@@ -72,6 +77,9 @@ void AGFgraphicsView::setAffine(Affine* value) {
 void AGFgraphicsView::setEuclidean(Euclidean* value) {
     euclidean = value;
 }
+void AGFgraphicsView::setProjective(Projective* value) {
+    projective = value;
+}
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей
@@ -81,6 +89,9 @@ Affine* AGFgraphicsView::getAffine() const {
 }
 Euclidean* AGFgraphicsView::getEuclidean() const {
     return euclidean;
+}
+Projective* AGFgraphicsView::getProjective() const {
+    return projective;
 }
 
 

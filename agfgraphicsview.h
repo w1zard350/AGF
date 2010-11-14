@@ -21,6 +21,7 @@
 #include "agfgrid.h"
 class Affine;
 class Euclidean;
+class Projective;
 /**
  * Класс виджета для рисования.
  */
@@ -32,6 +33,7 @@ protected:
      */
     Affine* affine;
     Euclidean* euclidean;
+    Projective* projective;
 public:
     AGFgraphicsView(QWidget* parent = 0);
 
@@ -60,12 +62,14 @@ public:
      */
     void setAffine(Affine* value);
     void setEuclidean(Euclidean* value);
+    void setProjective(Projective* value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get
      */
     Affine* getAffine() const;
     Euclidean* getEuclidean() const;
+    Projective* getProjective() const;
 };
 
 #endif // AGFGRAPHICSVIEW_H

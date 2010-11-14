@@ -20,6 +20,7 @@
 #include <QGraphicsView>
 #include "agfgrid.h"
 class Affine;
+class Euclidean;
 /**
  * Класс виджета для рисования.
  */
@@ -27,9 +28,10 @@ class AGFgraphicsView: public QGraphicsView
 {
 protected:
     /**
-     * @var Объект системы аффинных преобразований
+     * @var Объекты систем преобразований
      */
     Affine* affine;
+    Euclidean* euclidean;
 public:
     AGFgraphicsView(QWidget* parent = 0);
 
@@ -57,11 +59,13 @@ public:
      * Методы-аксессоры set
      */
     void setAffine(Affine* value);
+    void setEuclidean(Euclidean* value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get
      */
     Affine* getAffine() const;
+    Euclidean* getEuclidean() const;
 };
 
 #endif // AGFGRAPHICSVIEW_H

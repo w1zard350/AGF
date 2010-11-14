@@ -18,6 +18,9 @@
 #include "agfgraphicsview.h"
 #include "agfgraphicsitem.h"
 #include "affine.h"
+#include "euclidean.h"
+#include <cmath>
+using namespace std;
 AGFgraphicsView::AGFgraphicsView(QWidget* parent) {
     Q_UNUSED(parent);
     // создаем и настраиваем сцену
@@ -25,6 +28,7 @@ AGFgraphicsView::AGFgraphicsView(QWidget* parent) {
     setScene(scene);
     reconfigure();
     affine = new Affine();
+    euclidean = new Euclidean();
 }
 
 void AGFgraphicsView::addItem(AGFgraphicsItem* item) {
@@ -44,6 +48,10 @@ void AGFgraphicsView::reconfigure() {
 
 QPointF AGFgraphicsView::tc(QPointF point) {
 
+    // эвклидовые преобразования
+    point = euclidean->shift(point);
+    point = euclidean->rotate(point);
+
     // аффинные преобразования
     point = affine->scale(point);
     point = affine->transform(point);
@@ -54,8 +62,6 @@ QPointF AGFgraphicsView::tc(QPointF point) {
 
     return point;
 }
-
-
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры set для полей
@@ -63,12 +69,18 @@ QPointF AGFgraphicsView::tc(QPointF point) {
 void AGFgraphicsView::setAffine(Affine* value) {
     affine = value;
 }
+void AGFgraphicsView::setEuclidean(Euclidean* value) {
+    euclidean = value;
+}
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей
  */
 Affine* AGFgraphicsView::getAffine() const {
     return affine;
+}
+Euclidean* AGFgraphicsView::getEuclidean() const {
+    return euclidean;
 }
 
 

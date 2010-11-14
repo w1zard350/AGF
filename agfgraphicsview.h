@@ -19,11 +19,17 @@
 #define AGFGRAPHICSVIEW_H
 #include <QGraphicsView>
 #include "agfgrid.h"
+class Affine;
 /**
  * Класс виджета для рисования.
  */
 class AGFgraphicsView: public QGraphicsView
 {
+protected:
+    /**
+     * @var Объект системы аффинных преобразований
+     */
+    Affine* affine;
 public:
     AGFgraphicsView(QWidget* parent = 0);
 
@@ -35,11 +41,27 @@ public:
      * Пересчитывает параметры сцены и вносит изменения в виджет для рисования View
      */
     void reconfigure();
+    /**
+     * Применяет к переданной точке систему всех активных преобразований
+     * @param point точка для преобразования
+     * @return точка с преобразованными координатами
+     */
+    QPointF tc(QPointF point);
     //--------------------------------------------------------------------------------//
     /**
      * События
      */
     void resizeEvent(QResizeEvent* event);
+    //--------------------------------------------------------------------------------//
+    /**
+     * Методы-аксессоры set
+     */
+    void setAffine(Affine* value);
+    //--------------------------------------------------------------------------------//
+    /**
+     * Методы-аксессоры get
+     */
+    Affine* getAffine() const;
 };
 
 #endif // AGFGRAPHICSVIEW_H

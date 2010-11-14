@@ -16,8 +16,13 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "agfgraphicsitem.h"
+#include "agfgraphicsview.h"
 AGFgraphicsItem::AGFgraphicsItem(QGraphicsItem* parent): QGraphicsItem(parent) {
     setCenter(QPointF(0,0));
+}
+
+QPointF AGFgraphicsItem::tc(qreal x, qreal y) {
+    return view->tc(QPointF(x,y));
 }
 
 //--------------------------------------------------------------------------------//

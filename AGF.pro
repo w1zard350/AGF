@@ -15,12 +15,14 @@ SOURCES += main.cpp\
     agfgraphicsview.cpp \
     agfgrid.cpp \
     agfgraphicsitem.cpp \
-    agfshape.cpp
+    agfshape.cpp \
+    affine.cpp
 
 HEADERS  += mainwindow.h \
     agfgraphicsview.h \
     agfgrid.h \
     agfgraphicsitem.h \
-    agfshape.h
+    agfshape.h \
+    affine.h
 
 FORMS    += mainwindow.ui

@@ -36,6 +36,7 @@ protected:
     QPointF center;
 public:
     AGFgraphicsItem(QGraphicsItem* parent = 0);
+    QPointF tc(qreal x, qreal y);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры set

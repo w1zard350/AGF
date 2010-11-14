@@ -26,7 +26,7 @@ void AGFshape::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, 
     Q_UNUSED(option);
     Q_UNUSED(widget);
     painter->setPen(pen);
-    painter->drawRect(0,0, 50, 50);
+    painter->drawLine(tc(0,0), tc(50, 50));
 }
 
 QRectF AGFshape::boundingRect() const {

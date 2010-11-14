@@ -17,12 +17,14 @@
  */
 #include "agfgraphicsview.h"
 #include "agfgraphicsitem.h"
+#include "affine.h"
 AGFgraphicsView::AGFgraphicsView(QWidget* parent) {
     Q_UNUSED(parent);
     // создаем и настраиваем сцену
     QGraphicsScene* scene = new QGraphicsScene();
     setScene(scene);
     reconfigure();
+    affine = new Affine();
 }
 
 void AGFgraphicsView::addItem(AGFgraphicsItem* item) {
@@ -39,4 +41,34 @@ void AGFgraphicsView::resizeEvent(QResizeEvent* event) {
 void AGFgraphicsView::reconfigure() {
     scene()->setSceneRect(QRectF(0, 0, width(), height()));
 }
+
+QPointF AGFgraphicsView::tc(QPointF point) {
+
+    // аффинные преобразования
+    point = affine->scale(point);
+    point = affine->transform(point);
+
+    // преобразование математической (мировой) системы координат (МСК) в экранную систему координат (ЭСК)
+    point.setX(point.x() + width()/2);
+    point.setY(-point.y() + height()/2);
+
+    return point;
+}
+
+
+//--------------------------------------------------------------------------------//
+/**
+ * Методы-аксессоры set для полей
+ */
+void AGFgraphicsView::setAffine(Affine* value) {
+    affine = value;
+}
+//--------------------------------------------------------------------------------//
+/**
+ * Методы-аксессоры get для полей
+ */
+Affine* AGFgraphicsView::getAffine() const {
+    return affine;
+}
+
 

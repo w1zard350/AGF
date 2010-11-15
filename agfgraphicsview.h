@@ -90,6 +90,14 @@ public slots:
 
     void setXShift(double value);
     void setYShift(double value);
+
+    void setAffineXx(double value);
+    void setAffineYx(double value);
+    void setAffineXy(double value);
+    void setAffineYy(double value);
+
+    void setAffineX0(double value);
+    void setAffineY0(double value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get

@@ -21,7 +21,6 @@
 #include "transformations/euclidean.h"
 #include "transformations/projective.h"
 #include <cmath>
-#include <QDebug>
 using namespace std;
 AGFgraphicsView::AGFgraphicsView(QWidget* parent): QGraphicsView(parent) {
     // создаем и настраиваем сцену
@@ -116,6 +115,18 @@ void AGFgraphicsView::setMy(double value) {
     affine->setMy(value);
     scene()->update();
 }
+void AGFgraphicsView::setAlphaDegree(double value) {
+    euclidean->setAlpha(value*M_PI/180);
+    scene()->update();
+}
+void AGFgraphicsView::setBetaDegree(double value) {
+    euclidean->setBeta(value*M_PI/180);
+    scene()->update();
+}
+void AGFgraphicsView::setGammaDegree(double value) {
+    euclidean->setGamma(value*M_PI/180);
+    scene()->update();
+}
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей
@@ -140,12 +151,6 @@ bool AGFgraphicsView::getAffineEnabled() const {
 }
 bool AGFgraphicsView::getProjectiveEnabled() const {
     return projectiveEnabled;
-}
-qreal AGFgraphicsView::getMx() const {
-    return affine->getMx();
-}
-qreal AGFgraphicsView::getMy() const {
-    return affine->getMy();
 }
 
 

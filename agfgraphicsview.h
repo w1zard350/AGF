@@ -82,6 +82,9 @@ public slots:
     void setProjectiveEnabled(bool value);
     void setMx(double value);
     void setMy(double value);
+    void setAlphaDegree(double value);
+    void setBetaDegree(double value);
+    void setGammaDegree(double value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get
@@ -95,8 +98,6 @@ public:
     bool getEuclideanEnabled() const;
     bool getAffineEnabled() const;
     bool getProjectiveEnabled() const;
-    qreal getMx() const;
-    qreal getMy() const;
 };
 
 #endif // AGFGRAPHICSVIEW_H

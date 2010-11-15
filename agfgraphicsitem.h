@@ -17,7 +17,10 @@
  */
 #ifndef AGFGRAPHICSITEM_H
 #define AGFGRAPHICSITEM_H
+
 #include <QGraphicsItem>
+#include <QPainter>
+
 class AGFGraphicsView;
 
 /**

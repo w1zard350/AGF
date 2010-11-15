@@ -13,20 +13,20 @@ TEMPLATE = app
 SOURCES += main.cpp\
         mainwindow.cpp \
     agfgraphicsview.cpp \
-    agfgrid.cpp \
     agfgraphicsitem.cpp \
-    agfshape.cpp \
-    affine.cpp \
-    euclidean.cpp \
-    projective.cpp
+    transformations/projective.cpp \
+    transformations/euclidean.cpp \
+    transformations/affine.cpp \
+    items/agfshape.cpp \
+    items/agfgrid.cpp
 
 HEADERS  += mainwindow.h \
     agfgraphicsview.h \
-    agfgrid.h \
     agfgraphicsitem.h \
-    agfshape.h \
-    affine.h \
-    euclidean.h \
-    projective.h
+    transformations/projective.h \
+    transformations/euclidean.h \
+    transformations/affine.h \
+    items/agfshape.h \
+    items/agfgrid.h
 
 FORMS    += mainwindow.ui

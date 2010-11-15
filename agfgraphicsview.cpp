@@ -17,9 +17,9 @@
  */
 #include "agfgraphicsview.h"
 #include "agfgraphicsitem.h"
-#include "affine.h"
-#include "euclidean.h"
-#include "projective.h"
+#include "transformations/affine.h"
+#include "transformations/euclidean.h"
+#include "transformations/projective.h"
 #include <cmath>
 using namespace std;
 AGFgraphicsView::AGFgraphicsView(QWidget* parent) {

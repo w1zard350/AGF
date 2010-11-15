@@ -18,7 +18,7 @@
 #ifndef AGFGRAPHICSVIEW_H
 #define AGFGRAPHICSVIEW_H
 #include <QGraphicsView>
-#include "agfgrid.h"
+#include "items/agfgrid.h"
 class Affine;
 class Euclidean;
 class Projective;

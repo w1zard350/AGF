@@ -17,8 +17,8 @@
  */
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "agfgrid.h"
-#include "agfshape.h"
+#include "items/agfgrid.h"
+#include "items/agfshape.h"
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);

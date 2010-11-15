@@ -31,6 +31,8 @@ AGFgraphicsView::AGFgraphicsView(QWidget* parent) {
     affine = new Affine();
     euclidean = new Euclidean();
     projective = new Projective();
+    setBgColor(Qt::gray);
+    setBackgroundBrush(bgColor);
 }
 
 void AGFgraphicsView::addItem(AGFgraphicsItem* item) {
@@ -80,6 +82,10 @@ void AGFgraphicsView::setEuclidean(Euclidean* value) {
 void AGFgraphicsView::setProjective(Projective* value) {
     projective = value;
 }
+void AGFgraphicsView::setBgColor(Qt::GlobalColor value) {
+    setBackgroundBrush(value);
+    bgColor = value;
+}
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей
@@ -92,6 +98,9 @@ Euclidean* AGFgraphicsView::getEuclidean() const {
 }
 Projective* AGFgraphicsView::getProjective() const {
     return projective;
+}
+Qt::GlobalColor AGFgraphicsView::getBgColor() const {
+    return bgColor;
 }
 
 

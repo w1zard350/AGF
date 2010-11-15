@@ -34,6 +34,10 @@ protected:
     Affine* affine;
     Euclidean* euclidean;
     Projective* projective;
+    /**
+     * @var Цвет фона сцены
+     */
+    Qt::GlobalColor bgColor;
 public:
     AGFgraphicsView(QWidget* parent = 0);
 
@@ -63,6 +67,7 @@ public:
     void setAffine(Affine* value);
     void setEuclidean(Euclidean* value);
     void setProjective(Projective* value);
+    void setBgColor(Qt::GlobalColor value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get
@@ -70,6 +75,7 @@ public:
     Affine* getAffine() const;
     Euclidean* getEuclidean() const;
     Projective* getProjective() const;
+    Qt::GlobalColor getBgColor() const;
 };
 
 #endif // AGFGRAPHICSVIEW_H

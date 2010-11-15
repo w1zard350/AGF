@@ -17,8 +17,11 @@
  */
 #ifndef AGFGRAPHICSVIEW_H
 #define AGFGRAPHICSVIEW_H
+
 #include <QGraphicsView>
+#include <QWheelEvent>
 #include "items/agfgrid.h"
+
 class AGFAffine;
 class AGFEuclidean;
 class AGFProjective;
@@ -78,6 +81,7 @@ public:
      * События
      */
     void resizeEvent(QResizeEvent* event);
+	void wheelEvent(QWheelEvent *event);
 
     //--------------------------------------------------------------------------------//
     /**
@@ -89,6 +93,13 @@ public:
 
     void setBgColor(Qt::GlobalColor value);
     void setCenter(QPointF value);
+
+signals:
+	/**
+	 * Сигналы, возникающие при прокрутке колесиком
+	 */
+	void zoomedIn();
+	void zoomedOut();
 
 public slots:
     void setEuclideanEnabled(bool value);

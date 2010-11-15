@@ -18,7 +18,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "items/agfgrid.h"
-#include "items/agfshape.h"
 
 MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -26,14 +25,9 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     // конфигурируем сетку
     grid = new AGFGrid();
     ui->graphicsView->addItem(grid);
-
-    // конфигурируем фигуру
-    shape = new AGFShape();
-    ui->graphicsView->addItem(shape);
 }
 
 MainWindow::~MainWindow() {
     delete ui;
     delete grid;
-    delete shape;
 }

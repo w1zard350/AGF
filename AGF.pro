@@ -17,7 +17,6 @@ SOURCES += main.cpp\
     transformations/agfprojective.cpp \
     transformations/agfeuclidean.cpp \
     transformations/agfaffine.cpp \
-    items/agfshape.cpp \
     items/agfgrid.cpp
 
 HEADERS  += mainwindow.h \
@@ -26,7 +25,6 @@ HEADERS  += mainwindow.h \
     transformations/agfprojective.h \
     transformations/agfeuclidean.h \
     transformations/agfaffine.h \
-    items/agfshape.h \
     items/agfgrid.h
 
 FORMS    += mainwindow.ui

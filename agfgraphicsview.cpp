@@ -159,7 +159,42 @@ void AGFgraphicsView::setAffineY0(double value) {
     affine->setY0(value);
     scene()->update();
 }
-
+void AGFgraphicsView::setProjectiveXx(double value) {
+    projective->setXx(value);
+    scene()->update();
+}
+void AGFgraphicsView::setProjectiveYx(double value) {
+    projective->setYx(value);
+    scene()->update();
+}
+void AGFgraphicsView::setProjectiveXy(double value) {
+    projective->setXy(value);
+    scene()->update();
+}
+void AGFgraphicsView::setProjectiveYy(double value) {
+    projective->setYy(value);
+    scene()->update();
+}
+void AGFgraphicsView::setProjectiveX0(double value) {
+    projective->setX0(value);
+    scene()->update();
+}
+void AGFgraphicsView::setProjectiveY0(double value) {
+    projective->setY0(value);
+    scene()->update();
+}
+void AGFgraphicsView::setProjectiveW0(double value) {
+    projective->setW0(value);
+    scene()->update();
+}
+void AGFgraphicsView::setProjectiveWx(double value) {
+    projective->setWx(value);
+    scene()->update();
+}
+void AGFgraphicsView::setProjectiveWy(double value) {
+    projective->setWy(value);
+    scene()->update();
+}
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей

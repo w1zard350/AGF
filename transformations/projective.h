@@ -29,16 +29,19 @@ protected:
      */
     qreal x0;
     qreal y0;
+
     /**
      * @var Координаты конца оси X
      */
     qreal Xx;
     qreal Yx;
+
     /**
      * @var Координаты конца оси Y
      */
     qreal Xy;
     qreal Yy;
+
     /**
      * @var Веса координатных осей
      */

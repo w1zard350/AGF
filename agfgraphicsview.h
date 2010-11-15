@@ -98,6 +98,18 @@ public slots:
 
     void setAffineX0(double value);
     void setAffineY0(double value);
+
+    void setProjectiveXx(double value);
+    void setProjectiveYx(double value);
+    void setProjectiveXy(double value);
+    void setProjectiveYy(double value);
+
+    void setProjectiveX0(double value);
+    void setProjectiveY0(double value);
+
+    void setProjectiveW0(double value);
+    void setProjectiveWx(double value);
+    void setProjectiveWy(double value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get

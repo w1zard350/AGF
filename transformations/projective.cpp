@@ -17,8 +17,7 @@
  */
 #include "projective.h"
 
-Projective::Projective()
-{
+Projective::Projective() {
     setX0(0);
     setY0(0);
 

@@ -24,11 +24,11 @@ MainWindow::MainWindow(QWidget *parent): QMainWindow(parent), ui(new Ui::MainWin
     ui->setupUi(this);
 
     // конфигурируем сетку
-    grid = new AGFgrid();
+    grid = new AGFGrid();
     ui->graphicsView->addItem(grid);
 
     // конфигурируем фигуру
-    shape = new AGFshape();
+    shape = new AGFShape();
     ui->graphicsView->addItem(shape);
 }
 

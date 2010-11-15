@@ -22,39 +22,44 @@
 /**
  * Объект для рисования - сетка (grid).
  */
-class AGFgrid: public AGFgraphicsItem
+class AGFGrid: public AGFGraphicsItem
 {
 protected:
     /**
      * @var Массив параметров видимости координатных четвертей
      */
     bool quartersVisible[4];
+
     /**
      * @var Количество делений сетки по X и Y
      */
     int cellNumX;
     int cellNumY;
+
     /**
      * @var Размер ячейки сетки
      */
     int cellSize;
+
     /**
      * @var Перо для осей и для сетки
      */
     QPen axePen;
     QPen gridPen;
 public:
-    AGFgrid(QGraphicsItem* parent = 0);
+    AGFGrid(QGraphicsItem* parent = 0);
 
     //--------------------------------------------------------------------------------//
     /**
      * Событие полной перерисовки объекта
      */
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+
     /**
      * Определяет прямоугольник, в котором производиться рисование
      */
     QRectF boundingRect() const;
+
     /**
      * Рисует сетку
      * @param area - прямоугольная область рисования

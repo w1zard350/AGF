@@ -19,10 +19,11 @@
 #define AGFSHAPE_H
 #include <QPainter>
 #include "agfgraphicsitem.h"
+
 /**
  * Геометрическая фигура, любая.
  */
-class AGFshape: public AGFgraphicsItem
+class AGFShape: public AGFGraphicsItem
 {
 protected:
     /**
@@ -30,13 +31,13 @@ protected:
      */
     QPen pen;
 public:
-    AGFshape(AGFgraphicsItem* parent = 0);
-
+    AGFShape(AGFGraphicsItem* parent = 0);
     //--------------------------------------------------------------------------------//
     /**
      * Событие полной перерисовки объекта
      */
     void paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget);
+
     /**
      * Определяет прямоугольник, в котором производиться рисование
      */

@@ -14,18 +14,18 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     agfgraphicsview.cpp \
     agfgraphicsitem.cpp \
-    transformations/projective.cpp \
-    transformations/euclidean.cpp \
-    transformations/affine.cpp \
+    transformations/agfprojective.cpp \
+    transformations/agfeuclidean.cpp \
+    transformations/agfaffine.cpp \
     items/agfshape.cpp \
     items/agfgrid.cpp
 
 HEADERS  += mainwindow.h \
     agfgraphicsview.h \
     agfgraphicsitem.h \
-    transformations/projective.h \
-    transformations/euclidean.h \
-    transformations/affine.h \
+    transformations/agfprojective.h \
+    transformations/agfeuclidean.h \
+    transformations/agfaffine.h \
     items/agfshape.h \
     items/agfgrid.h
 

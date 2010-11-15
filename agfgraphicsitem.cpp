@@ -17,11 +17,11 @@
  */
 #include "agfgraphicsitem.h"
 #include "agfgraphicsview.h"
-AGFgraphicsItem::AGFgraphicsItem(QGraphicsItem* parent): QGraphicsItem(parent) {
+AGFGraphicsItem::AGFGraphicsItem(QGraphicsItem* parent): QGraphicsItem(parent) {
     setCenter(QPointF(0,0));
 }
 
-QPointF AGFgraphicsItem::tc(qreal x, qreal y) {
+QPointF AGFGraphicsItem::tc(qreal x, qreal y) {
     return view->tc(QPointF(x,y));
 }
 
@@ -29,11 +29,11 @@ QPointF AGFgraphicsItem::tc(qreal x, qreal y) {
 /**
  * Методы-аксессоры set для полей
  */
-void AGFgraphicsItem::setGraphicsView(AGFgraphicsView* value) {
+void AGFGraphicsItem::setGraphicsView(AGFGraphicsView* value) {
     view = value;
 }
 
-void AGFgraphicsItem::setCenter(QPointF value) {
+void AGFGraphicsItem::setCenter(QPointF value) {
     center = value;
 }
 
@@ -41,11 +41,11 @@ void AGFgraphicsItem::setCenter(QPointF value) {
 /**
  * Методы-аксессоры get для полей
  */
-AGFgraphicsView* AGFgraphicsItem::getGraphicsView() const {
+AGFGraphicsView* AGFGraphicsItem::getGraphicsView() const {
     return view;
 }
 
-QPointF AGFgraphicsItem::getCenter() const {
+QPointF AGFGraphicsItem::getCenter() const {
     return center;
 }
 

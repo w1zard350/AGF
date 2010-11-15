@@ -23,8 +23,8 @@
 namespace Ui {
     class MainWindow;
 }
-class AGFgrid;
-class AGFshape;
+class AGFGrid;
+class AGFShape;
 /**
  * Класс главного окна приложения, в котором содержиться виджет рисования
  */
@@ -36,11 +36,11 @@ public:
     /**
      * @var Объект сетки (грида)
      */
-    AGFgrid* grid;
+    AGFGrid* grid;
     /**
      * @var Объект фигуры (любой)
      */
-    AGFshape* shape;
+    AGFShape* shape;
 
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();

@@ -17,8 +17,8 @@
  */
 #include "agfgrid.h"
 #include <QGraphicsScene>
-#include <QDebug>
-AGFgrid::AGFgrid(QGraphicsItem* parent): AGFgraphicsItem(parent) {
+
+AGFGrid::AGFGrid(QGraphicsItem* parent): AGFGraphicsItem(parent) {
     setQuarterVisible(1, true);
     setQuarterVisible(2, true);
     setQuarterVisible(3, true);
@@ -30,7 +30,7 @@ AGFgrid::AGFgrid(QGraphicsItem* parent): AGFgraphicsItem(parent) {
     setPenGrid(QPen(Qt::lightGray, 1));
 }
 
-void AGFgrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
+void AGFGrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
     Q_UNUSED(option);
     Q_UNUSED(widget);
 
@@ -84,7 +84,7 @@ void AGFgrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, Q
 
 }
 
-void AGFgrid::drawGrid(QRectF area, QPainter* painter) {
+void AGFGrid::drawGrid(QRectF area, QPainter* painter) {
     painter->setPen(gridPen);
     // вертикальные полосы
     for(qreal x=area.left(); x <= area.right(); x += cellSize) {
@@ -96,7 +96,7 @@ void AGFgrid::drawGrid(QRectF area, QPainter* painter) {
     }
 }
 
-QRectF AGFgrid::boundingRect() const {
+QRectF AGFGrid::boundingRect() const {
     return scene()->sceneRect();
 }
 
@@ -104,61 +104,61 @@ QRectF AGFgrid::boundingRect() const {
 /**
  * Методы-аксессоры set для полей
  */
-void AGFgrid::setQuarterVisible(int num, bool value) {
+void AGFGrid::setQuarterVisible(int num, bool value) {
     if(num >= 1 && num <= 4) {
         quartersVisible[num-1] = value;
     }
 }
 
-void AGFgrid::setCellNumX(int value) {
+void AGFGrid::setCellNumX(int value) {
     if(value > 0) cellNumX = value;
     else cellNumX = 0;
 }
 
-void AGFgrid::setCellNumY(int value) {
+void AGFGrid::setCellNumY(int value) {
     if(value > 0) cellNumY = value;
     else cellNumY = 0;
 }
 
-void AGFgrid::setCellSize(int value) {
+void AGFGrid::setCellSize(int value) {
     if(value > 0) cellSize = value;
     else cellSize = 0;
 }
 
-void AGFgrid::setPenAxe(QPen value) {
+void AGFGrid::setPenAxe(QPen value) {
     axePen = value;
 }
 
-void AGFgrid::setPenGrid(QPen value) {
+void AGFGrid::setPenGrid(QPen value) {
     gridPen = value;
 }
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей
  */
-bool AGFgrid::getQuarterVisible(int num) const {
+bool AGFGrid::getQuarterVisible(int num) const {
     if(num >= 1 && num <= 4) {
         return quartersVisible[num-1];
     }
     return false;
 }
 
-int AGFgrid::getCellNumX() const {
+int AGFGrid::getCellNumX() const {
     return cellNumX;
 }
 
-int AGFgrid::getCellNumY() const {
+int AGFGrid::getCellNumY() const {
     return cellNumY;
 }
 
-int AGFgrid::getCellSize() const {
+int AGFGrid::getCellSize() const {
     return cellSize;
 }
 
-QPen AGFgrid::getPenAxe() const {
+QPen AGFGrid::getPenAxe() const {
     return axePen;
 }
 
-QPen AGFgrid::getPenGrid() const {
+QPen AGFGrid::getPenGrid() const {
     return gridPen;
 }

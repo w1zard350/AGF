@@ -17,20 +17,20 @@
  */
 #include "agfgraphicsview.h"
 #include "agfgraphicsitem.h"
-#include "transformations/affine.h"
-#include "transformations/euclidean.h"
-#include "transformations/projective.h"
+#include "transformations/agfaffine.h"
+#include "transformations/agfeuclidean.h"
+#include "transformations/agfprojective.h"
 #include <cmath>
 using namespace std;
-AGFgraphicsView::AGFgraphicsView(QWidget* parent): QGraphicsView(parent) {
+AGFGraphicsView::AGFGraphicsView(QWidget* parent): QGraphicsView(parent) {
     // создаем и настраиваем сцену
     QGraphicsScene* scene = new QGraphicsScene();
     setScene(scene);
     reconfigure();
 
-    affine = new Affine();
-    euclidean = new Euclidean();
-    projective = new Projective();
+    affine = new AGFAffine();
+    euclidean = new AGFEuclidean();
+    projective = new AGFProjective();
 
     setBgColor(Qt::gray);
     setBackgroundBrush(bgColor);
@@ -42,22 +42,22 @@ AGFgraphicsView::AGFgraphicsView(QWidget* parent): QGraphicsView(parent) {
     setCenter(QPointF(0,0));
 }
 
-void AGFgraphicsView::addItem(AGFgraphicsItem* item) {
+void AGFGraphicsView::addItem(AGFGraphicsItem* item) {
     item->setGraphicsView(this);
     scene()->addItem(item);
 }
 
-void AGFgraphicsView::resizeEvent(QResizeEvent* event) {
+void AGFGraphicsView::resizeEvent(QResizeEvent* event) {
     Q_UNUSED(event);
     reconfigure();
     scene()->update();
 }
 
-void AGFgraphicsView::reconfigure() {
+void AGFGraphicsView::reconfigure() {
     scene()->setSceneRect(QRectF(0, 0, width(), height()));
 }
 
-QPointF AGFgraphicsView::tc(QPointF point) {
+QPointF AGFGraphicsView::tc(QPointF point) {
 
     // эвклидовые преобразования
     if(euclideanEnabled) {
@@ -89,129 +89,129 @@ QPointF AGFgraphicsView::tc(QPointF point) {
 /**
  * Методы-аксессоры set для полей
  */
-void AGFgraphicsView::setAffine(Affine* value) {
+void AGFGraphicsView::setAffine(AGFAffine* value) {
     affine = value;
 }
-void AGFgraphicsView::setEuclidean(Euclidean* value) {
+void AGFGraphicsView::setEuclidean(AGFEuclidean* value) {
     euclidean = value;
 }
-void AGFgraphicsView::setProjective(Projective* value) {
+void AGFGraphicsView::setProjective(AGFProjective* value) {
     projective = value;
 }
-void AGFgraphicsView::setBgColor(Qt::GlobalColor value) {
+void AGFGraphicsView::setBgColor(Qt::GlobalColor value) {
     setBackgroundBrush(value);
     bgColor = value;
     scene()->update();
 }
-void AGFgraphicsView::setEuclideanEnabled(bool value) {
+void AGFGraphicsView::setEuclideanEnabled(bool value) {
     euclideanEnabled = value;
     scene()->update();
 }
-void AGFgraphicsView::setAffineEnabled(bool value) {
+void AGFGraphicsView::setAffineEnabled(bool value) {
     affineEnabled = value;
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveEnabled(bool value) {
+void AGFGraphicsView::setProjectiveEnabled(bool value) {
     projectiveEnabled = value;
     scene()->update();
 }
-void AGFgraphicsView::setMx(double value) {
+void AGFGraphicsView::setMx(double value) {
     affine->setMx(value);
     scene()->update();
 }
-void AGFgraphicsView::setMy(double value) {
+void AGFGraphicsView::setMy(double value) {
     affine->setMy(value);
     scene()->update();
 }
-void AGFgraphicsView::setAlphaDegree(double value) {
+void AGFGraphicsView::setAlphaDegree(double value) {
     euclidean->setAlpha(value*M_PI/180);
     scene()->update();
 }
-void AGFgraphicsView::setBetaDegree(double value) {
+void AGFGraphicsView::setBetaDegree(double value) {
     euclidean->setBeta(value*M_PI/180);
     scene()->update();
 }
-void AGFgraphicsView::setGammaDegree(double value) {
+void AGFGraphicsView::setGammaDegree(double value) {
     euclidean->setGamma(value*M_PI/180);
     scene()->update();
 }
-void AGFgraphicsView::setXShift(double value) {
+void AGFGraphicsView::setXShift(double value) {
     euclidean->setXShift(value);
     scene()->update();
 }
-void AGFgraphicsView::setYShift(double value) {
+void AGFGraphicsView::setYShift(double value) {
     euclidean->setYShift(value);
     scene()->update();
 }
-void AGFgraphicsView::setAffineXx(double value) {
+void AGFGraphicsView::setAffineXx(double value) {
     affine->setXx(value);
     scene()->update();
 }
-void AGFgraphicsView::setAffineYx(double value) {
+void AGFGraphicsView::setAffineYx(double value) {
     affine->setYx(value);
     scene()->update();
 }
-void AGFgraphicsView::setAffineXy(double value) {
+void AGFGraphicsView::setAffineXy(double value) {
     affine->setXy(value);
     scene()->update();
 }
-void AGFgraphicsView::setAffineYy(double value) {
+void AGFGraphicsView::setAffineYy(double value) {
     affine->setYy(value);
     scene()->update();
 }
-void AGFgraphicsView::setAffineX0(double value) {
+void AGFGraphicsView::setAffineX0(double value) {
     affine->setX0(value);
     scene()->update();
 }
-void AGFgraphicsView::setAffineY0(double value) {
+void AGFGraphicsView::setAffineY0(double value) {
     affine->setY0(value);
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveXx(double value) {
+void AGFGraphicsView::setProjectiveXx(double value) {
     projective->setXx(value);
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveYx(double value) {
+void AGFGraphicsView::setProjectiveYx(double value) {
     projective->setYx(value);
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveXy(double value) {
+void AGFGraphicsView::setProjectiveXy(double value) {
     projective->setXy(value);
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveYy(double value) {
+void AGFGraphicsView::setProjectiveYy(double value) {
     projective->setYy(value);
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveX0(double value) {
+void AGFGraphicsView::setProjectiveX0(double value) {
     projective->setX0(value);
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveY0(double value) {
+void AGFGraphicsView::setProjectiveY0(double value) {
     projective->setY0(value);
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveW0(double value) {
+void AGFGraphicsView::setProjectiveW0(double value) {
     projective->setW0(value);
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveWx(double value) {
+void AGFGraphicsView::setProjectiveWx(double value) {
     projective->setWx(value);
     scene()->update();
 }
-void AGFgraphicsView::setProjectiveWy(double value) {
+void AGFGraphicsView::setProjectiveWy(double value) {
     projective->setWy(value);
     scene()->update();
 }
-void AGFgraphicsView::setCenter(QPointF value) {
+void AGFGraphicsView::setCenter(QPointF value) {
     center = value;
     scene()->update();
 }
-void AGFgraphicsView::setCenterX(double value) {
+void AGFGraphicsView::setCenterX(double value) {
     center.setX(value);
     scene()->update();
 }
-void AGFgraphicsView::setCenterY(double value) {
+void AGFGraphicsView::setCenterY(double value) {
     center.setY(value);
     scene()->update();
 }
@@ -219,28 +219,28 @@ void AGFgraphicsView::setCenterY(double value) {
 /**
  * Методы-аксессоры get для полей
  */
-Affine* AGFgraphicsView::getAffine() const {
+AGFAffine* AGFGraphicsView::getAffine() const {
     return affine;
 }
-Euclidean* AGFgraphicsView::getEuclidean() const {
+AGFEuclidean* AGFGraphicsView::getEuclidean() const {
     return euclidean;
 }
-Projective* AGFgraphicsView::getProjective() const {
+AGFProjective* AGFGraphicsView::getProjective() const {
     return projective;
 }
-Qt::GlobalColor AGFgraphicsView::getBgColor() const {
+Qt::GlobalColor AGFGraphicsView::getBgColor() const {
     return bgColor;
 }
-bool AGFgraphicsView::getEuclideanEnabled() const {
+bool AGFGraphicsView::getEuclideanEnabled() const {
     return euclideanEnabled;
 }
-bool AGFgraphicsView::getAffineEnabled() const {
+bool AGFGraphicsView::getAffineEnabled() const {
     return affineEnabled;
 }
-bool AGFgraphicsView::getProjectiveEnabled() const {
+bool AGFGraphicsView::getProjectiveEnabled() const {
     return projectiveEnabled;
 }
-QPointF AGFgraphicsView::getCenter() const {
+QPointF AGFGraphicsView::getCenter() const {
     return center;
 }
 

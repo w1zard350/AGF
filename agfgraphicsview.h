@@ -19,22 +19,23 @@
 #define AGFGRAPHICSVIEW_H
 #include <QGraphicsView>
 #include "items/agfgrid.h"
-class Affine;
-class Euclidean;
-class Projective;
+class AGFAffine;
+class AGFEuclidean;
+class AGFProjective;
+
 /**
  * Класс виджета для рисования.
  */
-class AGFgraphicsView: public QGraphicsView
+class AGFGraphicsView: public QGraphicsView
 {
     Q_OBJECT
 protected:
     /**
      * @var Объекты систем преобразований
      */
-    Affine* affine;
-    Euclidean* euclidean;
-    Projective* projective;
+    AGFAffine* affine;
+    AGFEuclidean* euclidean;
+    AGFProjective* projective;
 
     /**
      * @var Цвет фона сцены
@@ -53,37 +54,42 @@ protected:
      */
     QPointF center;
 public:
-    AGFgraphicsView(QWidget* parent = 0);
+    AGFGraphicsView(QWidget* parent = 0);
 
     /**
      * Добавляет новый элемент (объект для прорисовки) в сцену
      */
-    void addItem(AGFgraphicsItem* item);
+    void addItem(AGFGraphicsItem* item);
+
     /**
      * Пересчитывает параметры сцены и вносит изменения в виджет для рисования View
      */
     void reconfigure();
+
     /**
      * Применяет к переданной точке систему всех активных преобразований
      * @param point точка для преобразования
      * @return точка с преобразованными координатами
      */
     QPointF tc(QPointF point);
+
     //--------------------------------------------------------------------------------//
     /**
      * События
      */
     void resizeEvent(QResizeEvent* event);
+
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры set
      */
-    void setAffine(Affine* value);
-    void setEuclidean(Euclidean* value);
-    void setProjective(Projective* value);
+    void setAffine(AGFAffine* value);
+    void setEuclidean(AGFEuclidean* value);
+    void setProjective(AGFProjective* value);
 
     void setBgColor(Qt::GlobalColor value);
     void setCenter(QPointF value);
+
 public slots:
     void setEuclideanEnabled(bool value);
     void setAffineEnabled(bool value);
@@ -125,10 +131,11 @@ public slots:
     /**
      * Методы-аксессоры get
      */
+
 public:
-    Affine* getAffine() const;
-    Euclidean* getEuclidean() const;
-    Projective* getProjective() const;
+    AGFAffine* getAffine() const;
+    AGFEuclidean* getEuclidean() const;
+    AGFProjective* getProjective() const;
 
     bool getEuclideanEnabled() const;
     bool getAffineEnabled() const;

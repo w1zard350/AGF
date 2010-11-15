@@ -18,26 +18,27 @@
 #ifndef AGFGRAPHICSITEM_H
 #define AGFGRAPHICSITEM_H
 #include <QGraphicsItem>
-class AGFgraphicsView;
+class AGFGraphicsView;
 
 /**
  * Абстрактный класс объекта рисования. Наследуя его вы создаете новую фигуру.
  * Предназначен для управления базовыми функциями для всех объектов рисования.
  */
-class AGFgraphicsItem: public QGraphicsItem
+class AGFGraphicsItem: public QGraphicsItem
 {
 protected:
     /**
      * @var Виджет для рисования
      */
-    AGFgraphicsView* view;
+    AGFGraphicsView* view;
 
     /**
      * @var Координата центра фигуры
      */
     QPointF center;
+
 public:
-    AGFgraphicsItem(QGraphicsItem* parent = 0);
+    AGFGraphicsItem(QGraphicsItem* parent = 0);
 
     /**
      * Применяет к переданной точке систему всех активных преобразований
@@ -45,17 +46,19 @@ public:
      * @return точка с преобразованными координатами
      */
     QPointF tc(qreal x, qreal y);
+
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры set
      */
-    void setGraphicsView(AGFgraphicsView* value);
+    void setGraphicsView(AGFGraphicsView* value);
     void setCenter(QPointF value);
+
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get
      */
-    AGFgraphicsView* getGraphicsView() const;
+    AGFGraphicsView* getGraphicsView() const;
     QPointF getCenter() const;
 };
 

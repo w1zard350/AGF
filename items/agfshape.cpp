@@ -18,31 +18,31 @@
 #include <QGraphicsScene>
 #include "agfshape.h"
 
-AGFshape::AGFshape(AGFgraphicsItem* parent): AGFgraphicsItem(parent) {
+AGFShape::AGFShape(AGFGraphicsItem* parent): AGFGraphicsItem(parent) {
     setPen(QPen(Qt::red, 2));
 }
 
-void AGFshape::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
+void AGFShape::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, QWidget* widget) {
     Q_UNUSED(option);
     Q_UNUSED(widget);
     painter->setPen(pen);
     painter->drawLine(tc(0,0), tc(50, 50));
 }
 
-QRectF AGFshape::boundingRect() const {
+QRectF AGFShape::boundingRect() const {
     return scene()->sceneRect();
 }
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры set для полей
  */
-void AGFshape::setPen(QPen value) {
+void AGFShape::setPen(QPen value) {
     pen = value;
 }
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей
  */
-QPen AGFshape::getPen() const {
+QPen AGFShape::getPen() const {
     return pen;
 }

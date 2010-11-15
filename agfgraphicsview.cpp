@@ -27,14 +27,19 @@ AGFgraphicsView::AGFgraphicsView(QWidget* parent): QGraphicsView(parent) {
     QGraphicsScene* scene = new QGraphicsScene();
     setScene(scene);
     reconfigure();
+
     affine = new Affine();
     euclidean = new Euclidean();
     projective = new Projective();
+
     setBgColor(Qt::gray);
     setBackgroundBrush(bgColor);
+
     setEuclideanEnabled(false);
     setAffineEnabled(false);
     setProjectiveEnabled(false);
+
+    setCenter(QPointF(0,0));
 }
 
 void AGFgraphicsView::addItem(AGFgraphicsItem* item) {
@@ -70,6 +75,9 @@ QPointF AGFgraphicsView::tc(QPointF point) {
     if(projectiveEnabled) {
         point = projective->transform(point);
     }
+
+    // смещение центра сцены
+    point += center;
 
     // преобразование математической (мировой) системы координат (МСК) в экранную систему координат (ЭСК)
     point.setX(point.x() + width()/2);
@@ -195,6 +203,18 @@ void AGFgraphicsView::setProjectiveWy(double value) {
     projective->setWy(value);
     scene()->update();
 }
+void AGFgraphicsView::setCenter(QPointF value) {
+    center = value;
+    scene()->update();
+}
+void AGFgraphicsView::setCenterX(double value) {
+    center.setX(value);
+    scene()->update();
+}
+void AGFgraphicsView::setCenterY(double value) {
+    center.setY(value);
+    scene()->update();
+}
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей
@@ -220,5 +240,7 @@ bool AGFgraphicsView::getAffineEnabled() const {
 bool AGFgraphicsView::getProjectiveEnabled() const {
     return projectiveEnabled;
 }
-
+QPointF AGFgraphicsView::getCenter() const {
+    return center;
+}
 

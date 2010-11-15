@@ -35,16 +35,23 @@ protected:
     Affine* affine;
     Euclidean* euclidean;
     Projective* projective;
+
     /**
      * @var Цвет фона сцены
      */
     Qt::GlobalColor bgColor;
+
     /**
      * @var Состояния "включенности" систем преобразований
      */
     bool affineEnabled;
     bool euclideanEnabled;
     bool projectiveEnabled;
+
+    /**
+     * @var Координата центра сцены
+     */
+    QPointF center;
 public:
     AGFgraphicsView(QWidget* parent = 0);
 
@@ -76,6 +83,7 @@ public:
     void setProjective(Projective* value);
 
     void setBgColor(Qt::GlobalColor value);
+    void setCenter(QPointF value);
 public slots:
     void setEuclideanEnabled(bool value);
     void setAffineEnabled(bool value);
@@ -110,6 +118,9 @@ public slots:
     void setProjectiveW0(double value);
     void setProjectiveWx(double value);
     void setProjectiveWy(double value);
+
+    void setCenterX(double value);
+    void setCenterY(double value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get
@@ -119,10 +130,12 @@ public:
     Euclidean* getEuclidean() const;
     Projective* getProjective() const;
 
-    Qt::GlobalColor getBgColor() const;
     bool getEuclideanEnabled() const;
     bool getAffineEnabled() const;
     bool getProjectiveEnabled() const;
+
+    Qt::GlobalColor getBgColor() const;
+    QPointF getCenter() const;
 };
 
 #endif // AGFGRAPHICSVIEW_H

@@ -30,12 +30,11 @@ QPointF AGFgraphicsItem::tc(qreal x, qreal y) {
  * Методы-аксессоры set для полей
  */
 void AGFgraphicsItem::setGraphicsView(AGFgraphicsView* value) {
-    this->view = value;
+    view = value;
 }
 
-void AGFgraphicsItem::setCenter(QPointF value)
-{
-    this->center = value;
+void AGFgraphicsItem::setCenter(QPointF value) {
+    center = value;
 }
 
 //--------------------------------------------------------------------------------//

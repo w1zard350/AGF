@@ -19,6 +19,7 @@
 #define AGFGRAPHICSITEM_H
 #include <QGraphicsItem>
 class AGFgraphicsView;
+
 /**
  * Абстрактный класс объекта рисования. Наследуя его вы создаете новую фигуру.
  * Предназначен для управления базовыми функциями для всех объектов рисования.
@@ -30,12 +31,14 @@ protected:
      * @var Виджет для рисования
      */
     AGFgraphicsView* view;
+
     /**
      * @var Координата центра фигуры
      */
     QPointF center;
 public:
     AGFgraphicsItem(QGraphicsItem* parent = 0);
+
     /**
      * Применяет к переданной точке систему всех активных преобразований
      * @param x,y координаты точки для преобразования

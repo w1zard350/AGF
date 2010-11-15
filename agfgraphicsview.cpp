@@ -21,9 +21,9 @@
 #include "transformations/euclidean.h"
 #include "transformations/projective.h"
 #include <cmath>
+#include <QDebug>
 using namespace std;
-AGFgraphicsView::AGFgraphicsView(QWidget* parent) {
-    Q_UNUSED(parent);
+AGFgraphicsView::AGFgraphicsView(QWidget* parent): QGraphicsView(parent) {
     // создаем и настраиваем сцену
     QGraphicsScene* scene = new QGraphicsScene();
     setScene(scene);
@@ -33,6 +33,9 @@ AGFgraphicsView::AGFgraphicsView(QWidget* parent) {
     projective = new Projective();
     setBgColor(Qt::gray);
     setBackgroundBrush(bgColor);
+    setEuclideanEnabled(false);
+    setAffineEnabled(false);
+    setProjectiveEnabled(false);
 }
 
 void AGFgraphicsView::addItem(AGFgraphicsItem* item) {
@@ -53,15 +56,21 @@ void AGFgraphicsView::reconfigure() {
 QPointF AGFgraphicsView::tc(QPointF point) {
 
     // эвклидовые преобразования
-    point = euclidean->shift(point);
-    point = euclidean->rotate(point);
+    if(euclideanEnabled) {
+        point = euclidean->shift(point);
+        point = euclidean->rotate(point);
+    }
 
     // аффинные преобразования
-    point = affine->scale(point);
-    point = affine->transform(point);
+    if(affineEnabled) {
+        point = affine->scale(point);
+        point = affine->transform(point);
+    }
 
     // проективные преобразования
-    point = projective->transform(point);
+    if(projectiveEnabled) {
+        point = projective->transform(point);
+    }
 
     // преобразование математической (мировой) системы координат (МСК) в экранную систему координат (ЭСК)
     point.setX(point.x() + width()/2);
@@ -85,6 +94,19 @@ void AGFgraphicsView::setProjective(Projective* value) {
 void AGFgraphicsView::setBgColor(Qt::GlobalColor value) {
     setBackgroundBrush(value);
     bgColor = value;
+    scene()->update();
+}
+void AGFgraphicsView::setEuclideanEnabled(bool value) {
+    euclideanEnabled = value;
+    scene()->update();
+}
+void AGFgraphicsView::setAffineEnabled(bool value) {
+    affineEnabled = value;
+    scene()->update();
+}
+void AGFgraphicsView::setProjectiveEnabled(bool value) {
+    projectiveEnabled = value;
+    scene()->update();
 }
 //--------------------------------------------------------------------------------//
 /**
@@ -101,6 +123,15 @@ Projective* AGFgraphicsView::getProjective() const {
 }
 Qt::GlobalColor AGFgraphicsView::getBgColor() const {
     return bgColor;
+}
+bool AGFgraphicsView::getEuclideanEnabled() const {
+    return euclideanEnabled;
+}
+bool AGFgraphicsView::getAffineEnabled() const {
+    return affineEnabled;
+}
+bool AGFgraphicsView::getProjectiveEnabled() const {
+    return projectiveEnabled;
 }
 
 

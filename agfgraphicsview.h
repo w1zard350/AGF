@@ -27,6 +27,7 @@ class Projective;
  */
 class AGFgraphicsView: public QGraphicsView
 {
+    Q_OBJECT
 protected:
     /**
      * @var Объекты систем преобразований
@@ -38,6 +39,12 @@ protected:
      * @var Цвет фона сцены
      */
     Qt::GlobalColor bgColor;
+    /**
+     * @var Состояния "включенности" систем преобразований
+     */
+    bool affineEnabled;
+    bool euclideanEnabled;
+    bool projectiveEnabled;
 public:
     AGFgraphicsView(QWidget* parent = 0);
 
@@ -67,15 +74,25 @@ public:
     void setAffine(Affine* value);
     void setEuclidean(Euclidean* value);
     void setProjective(Projective* value);
+
     void setBgColor(Qt::GlobalColor value);
+public slots:
+    void setEuclideanEnabled(bool value);
+    void setAffineEnabled(bool value);
+    void setProjectiveEnabled(bool value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get
      */
+public:
     Affine* getAffine() const;
     Euclidean* getEuclidean() const;
     Projective* getProjective() const;
+
     Qt::GlobalColor getBgColor() const;
+    bool getEuclideanEnabled() const;
+    bool getAffineEnabled() const;
+    bool getProjectiveEnabled() const;
 };
 
 #endif // AGFGRAPHICSVIEW_H

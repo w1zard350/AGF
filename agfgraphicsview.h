@@ -80,11 +80,16 @@ public slots:
     void setEuclideanEnabled(bool value);
     void setAffineEnabled(bool value);
     void setProjectiveEnabled(bool value);
+
     void setMx(double value);
     void setMy(double value);
+
     void setAlphaDegree(double value);
     void setBetaDegree(double value);
     void setGammaDegree(double value);
+
+    void setXShift(double value);
+    void setYShift(double value);
     //--------------------------------------------------------------------------------//
     /**
      * Методы-аксессоры get

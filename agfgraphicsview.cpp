@@ -127,6 +127,16 @@ void AGFgraphicsView::setGammaDegree(double value) {
     euclidean->setGamma(value*M_PI/180);
     scene()->update();
 }
+
+void AGFgraphicsView::setXShift(double value) {
+    euclidean->setXShift(value);
+    scene()->update();
+}
+
+void AGFgraphicsView::setYShift(double value) {
+    euclidean->setYShift(value);
+    scene()->update();
+}
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей

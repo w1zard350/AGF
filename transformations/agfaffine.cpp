@@ -83,6 +83,9 @@ void AGFAffine::setMx(qreal value) {
 void AGFAffine::setMy(qreal value) {
     My = value;
 }
+void AGFAffine::setMg(qreal value) {
+	Mx = My = value;
+}
 void AGFAffine::setInvertX(bool value) {
     invertX = value;
 }

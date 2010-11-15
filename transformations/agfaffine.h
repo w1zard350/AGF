@@ -84,6 +84,7 @@ public:
     void setYy(qreal value);
     void setMx(qreal value);
     void setMy(qreal value);
+	void setMg(qreal value);
     void setInvertX(bool value);
     void setInvertY(bool value);
 
@@ -99,6 +100,7 @@ public:
     qreal getYy() const;
     qreal getMx() const;
     qreal getMy() const;
+
     bool getInvertX() const;
     bool getInvertY() const;
 };

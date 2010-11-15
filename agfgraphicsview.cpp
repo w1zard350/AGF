@@ -108,6 +108,14 @@ void AGFgraphicsView::setProjectiveEnabled(bool value) {
     projectiveEnabled = value;
     scene()->update();
 }
+void AGFgraphicsView::setMx(double value) {
+    affine->setMx(value);
+    scene()->update();
+}
+void AGFgraphicsView::setMy(double value) {
+    affine->setMy(value);
+    scene()->update();
+}
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры get для полей
@@ -132,6 +140,12 @@ bool AGFgraphicsView::getAffineEnabled() const {
 }
 bool AGFgraphicsView::getProjectiveEnabled() const {
     return projectiveEnabled;
+}
+qreal AGFgraphicsView::getMx() const {
+    return affine->getMx();
+}
+qreal AGFgraphicsView::getMy() const {
+    return affine->getMy();
 }
 
 

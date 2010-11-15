@@ -57,26 +57,31 @@ void AGFgrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, Q
     if(quartersVisible[3]) drawGrid(fourthQ, painter);
 
     painter->setPen(axePen);
-    painter->drawLine(tc(xleft, yc), tc(xright, yc)); // ось X
-    painter->drawLine(tc(xc, ybottom), tc(xc, ytop)); // ось Y
-    painter->drawLine(tc(xc, yc), tc(xright, yc)); // ось X
-    painter->drawLine(tc(xc, yc), tc(xc, ytop)); // ось Y
+    if(quartersVisible[0] || quartersVisible[3]) painter->drawLine(tc(xc, yc), tc(xright, yc)); // ось X (положительная)
+    if(quartersVisible[1] || quartersVisible[2]) painter->drawLine(tc(xleft, yc), tc(xc, yc)); // ось X (отрицательная)
+    if(quartersVisible[0] || quartersVisible[1]) painter->drawLine(tc(xc, yc), tc(xc, ytop)); // ось Y (положительная)
+    if(quartersVisible[2] || quartersVisible[3]) painter->drawLine(tc(xc, yc), tc(xc, ybottom)); // ось Y (отрицательная)
 
-    // стрелочка X
+
     QPointF points[3];
-    points[0] = tc(xright, yc);
-    points[1] = tc(xright-10, yc-2);
-    points[2] = tc(xright-10, yc+2);
-    painter->drawPolygon(points, 3, Qt::WindingFill);
+    // стрелочка X
+    if(quartersVisible[0] || quartersVisible[3]) {
+        points[0] = tc(xright, yc);
+        points[1] = tc(xright-10, yc-2);
+        points[2] = tc(xright-10, yc+2);
+        painter->drawPolygon(points, 3, Qt::WindingFill);
+        painter->drawText(tc(xright-10, yc+15), "x");
+    }
 
     // стрелочка Y
-    points[0] = tc(xc, ytop);
-    points[1] = tc(xc-2, ytop-10);
-    points[2] = tc(xc+2, ytop-10);
-    painter->drawPolygon(points, 3, Qt::WindingFill);
+    if(quartersVisible[0] || quartersVisible[1]) {
+        points[0] = tc(xc, ytop);
+        points[1] = tc(xc-2, ytop-10);
+        points[2] = tc(xc+2, ytop-10);
+        painter->drawPolygon(points, 3, Qt::WindingFill);
+        painter->drawText(tc(xc+5, ytop-10), "y");
+    }
 
-    painter->drawText(tc(xright-10, yc+15), "x");
-    painter->drawText(tc(xc+5, ytop-10), "y");
 }
 
 void AGFgrid::drawGrid(QRectF area, QPainter* painter) {

@@ -81,7 +81,7 @@ public:
      * События
      */
     void resizeEvent(QResizeEvent* event);
-	void wheelEvent(QWheelEvent *event);
+    void wheelEvent(QWheelEvent *event);
 
     //--------------------------------------------------------------------------------//
     /**
@@ -95,11 +95,11 @@ public:
     void setCenter(QPointF value);
 
 signals:
-	/**
-	 * Сигналы, возникающие при прокрутке колесиком
-	 */
-	void zoomedIn();
-	void zoomedOut();
+    /**
+     * Сигналы, возникающие при прокрутке колесиком
+     */
+    void zoomedIn();
+    void zoomedOut();
 
 public slots:
     void setEuclideanEnabled(bool value);

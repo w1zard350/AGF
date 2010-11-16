@@ -18,7 +18,7 @@
 #ifndef AGFGRID_H
 #define AGFGRID_H
 #include <QPainter>
-#include "agfgraphicsitem.h"
+#include "../agfgraphicsitem.h"
 
 /**
  * Объект для рисования - сетка (grid).

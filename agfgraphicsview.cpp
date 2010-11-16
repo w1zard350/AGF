@@ -53,13 +53,14 @@ void AGFGraphicsView::resizeEvent(QResizeEvent* event) {
     scene()->update();
 }
 
-void AGFGraphicsView::wheelEvent(QWheelEvent *event) {
-	if(event->delta() > 0) emit zoomedIn();
-	else emit zoomedOut;
+void AGFGraphicsView::wheelEvent(QWheelEvent* event) {
+    if(event->delta() > 0) emit zoomedIn();
+    else emit zoomedOut();
+    QGraphicsView::wheelEvent(event);
 }
 
 void AGFGraphicsView::reconfigure() {
-	scene()->setSceneRect(QRectF(0, 0, width()-5, height()-5));
+    scene()->setSceneRect(QRectF(0, 0, width()-5, height()-5));
 }
 
 QPointF AGFGraphicsView::tc(QPointF point) {

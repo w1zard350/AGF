@@ -21,6 +21,7 @@
 #include "transformations/agfeuclidean.h"
 #include "transformations/agfprojective.h"
 #include <cmath>
+#include <QDebug>
 using namespace std;
 AGFGraphicsView::AGFGraphicsView(QWidget* parent): QGraphicsView(parent) {
     // создаем и настраиваем сцену
@@ -48,9 +49,9 @@ void AGFGraphicsView::addItem(AGFGraphicsItem* item) {
 }
 
 void AGFGraphicsView::resizeEvent(QResizeEvent* event) {
-    Q_UNUSED(event);
     reconfigure();
     scene()->update();
+    QGraphicsView::resizeEvent(event);
 }
 
 void AGFGraphicsView::wheelEvent(QWheelEvent* event) {

@@ -64,22 +64,25 @@ void AGFGrid::paint(QPainter* painter, const QStyleOptionGraphicsItem* option, Q
 
 
     QPointF points[3];
+    QPointF point;
     // стрелочка X
     if(quartersVisible[0] || quartersVisible[3]) {
-        points[0] = tc(xright, yc);
-        points[1] = tc(xright-10, yc-2);
-        points[2] = tc(xright-10, yc+2);
+        point = tc(xright, yc);
+        points[0] = point;
+        points[1] = QPointF(point.x()-10, point.y()-2);
+        points[2] = QPointF(point.x()-10, point.y()+2);
         painter->drawPolygon(points, 3, Qt::WindingFill);
-        painter->drawText(tc(xright-10, yc+15), "x");
+        painter->drawText(QPointF(point.x()-10, point.y()+15), "x");
     }
 
     // стрелочка Y
     if(quartersVisible[0] || quartersVisible[1]) {
-        points[0] = tc(xc, ytop);
-        points[1] = tc(xc-2, ytop-10);
-        points[2] = tc(xc+2, ytop-10);
+        point = tc(xc, ytop);
+        points[0] = point;
+        points[1] = QPointF(point.x()-2, point.y()+10);
+        points[2] = QPointF(point.x()+2, point.y()+10);
         painter->drawPolygon(points, 3, Qt::WindingFill);
-        painter->drawText(tc(xc+5, ytop-10), "y");
+        painter->drawText(QPointF(point.x()+5, point.y()-10), "y");
     }
 
 }

@@ -19,6 +19,7 @@
 #define AGFGRID_H
 #include <QPainter>
 #include "agfgraphicsitem.h"
+
 /**
  * Объект для рисования - сетка (grid).
  */

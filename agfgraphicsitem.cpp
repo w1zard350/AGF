@@ -25,6 +25,10 @@ QPointF AGFGraphicsItem::tc(qreal x, qreal y) {
     return view->tc(QPointF(x,y));
 }
 
+QPointF AGFGraphicsItem::tc(QPointF point) {
+	return view->tc(point);
+}
+
 //--------------------------------------------------------------------------------//
 /**
  * Методы-аксессоры set для полей

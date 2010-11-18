@@ -108,6 +108,7 @@ public slots:
 
     void setMx(double value);
     void setMy(double value);
+    void setMg(double value);
 
     void setAlphaDegree(double value);
     void setBetaDegree(double value);

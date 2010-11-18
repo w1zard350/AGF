@@ -130,6 +130,10 @@ void AGFGraphicsView::setMy(double value) {
     affine->setMy(value);
     scene()->update();
 }
+void AGFGraphicsView::setMg(double value) {
+    affine->setMg(value);
+    scene()->update();
+}
 void AGFGraphicsView::setAlphaDegree(double value) {
     euclidean->setAlpha(value*M_PI/180);
     scene()->update();

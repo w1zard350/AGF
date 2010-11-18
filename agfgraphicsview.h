@@ -39,7 +39,7 @@ protected:
     AGFAffine* affine;
     AGFEuclidean* euclidean;
     AGFProjective* projective;
-    //тест 77
+    //тест из qt
     /**
      * @var Цвет фона сцены
      */

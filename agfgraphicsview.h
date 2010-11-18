@@ -39,7 +39,7 @@ protected:
     AGFAffine* affine;
     AGFEuclidean* euclidean;
     AGFProjective* projective;
-    //тест из qt 2
+
     /**
      * @var Цвет фона сцены
      */
@@ -132,7 +132,7 @@ public slots:
     void setProjectiveX0(double value);
     void setProjectiveY0(double value);
 
-    void setProjectiveW0(double value);
+    void setProjectiveW0(int value);
     void setProjectiveWx(double value);
     void setProjectiveWy(double value);
 

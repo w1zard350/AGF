@@ -198,7 +198,7 @@ void AGFGraphicsView::setProjectiveY0(double value) {
     projective->setY0(value);
     scene()->update();
 }
-void AGFGraphicsView::setProjectiveW0(double value) {
+void AGFGraphicsView::setProjectiveW0(int value) {
     projective->setW0(value);
     scene()->update();
 }

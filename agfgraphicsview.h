@@ -125,6 +125,9 @@ public slots:
     void setAffineX0(double value);
     void setAffineY0(double value);
 
+    void setInvertX(bool value);
+    void setInvertY(bool value);
+
     void setProjectiveXx(double value);
     void setProjectiveYx(double value);
     void setProjectiveXy(double value);

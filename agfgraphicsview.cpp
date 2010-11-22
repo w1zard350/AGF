@@ -178,6 +178,14 @@ void AGFGraphicsView::setAffineY0(double value) {
     affine->setY0(value);
     scene()->update();
 }
+void AGFGraphicsView::setInvertX(bool value) {
+    affine->setInvertX(value);
+    scene()->update();
+}
+void AGFGraphicsView::setInvertY(bool value) {
+    affine->setInvertY(value);
+    scene()->update();
+}
 void AGFGraphicsView::setProjectiveXx(double value) {
     projective->setXx(value);
     scene()->update();

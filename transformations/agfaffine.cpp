@@ -59,38 +59,49 @@ QPointF AGFAffine::transform(QPointF point) {
 /**
  * Методы-аксессоры set для полей
  */
-void AGFAffine::setX0(qreal value) {
+void AGFAffine::setX0(double value) {
     x0 = value;
+    emit changed();
 }
-void AGFAffine::setY0(qreal value) {
+void AGFAffine::setY0(double value) {
     y0 = value;
+    emit changed();
 }
-void AGFAffine::setXx(qreal value) {
+void AGFAffine::setXx(double value) {
     Xx = value;
+    emit changed();
 }
-void AGFAffine::setYx(qreal value) {
+void AGFAffine::setYx(double value) {
     Yx = value;
+    emit changed();
 }
-void AGFAffine::setXy(qreal value) {
+void AGFAffine::setXy(double value) {
     Xy = value;
+    emit changed();
 }
-void AGFAffine::setYy(qreal value) {
+void AGFAffine::setYy(double value) {
     Yy = value;
+    emit changed();
 }
-void AGFAffine::setMx(qreal value) {
+void AGFAffine::setMx(double value) {
     Mx = value;
+    emit changed();
 }
-void AGFAffine::setMy(qreal value) {
+void AGFAffine::setMy(double value) {
     My = value;
+    emit changed();
 }
-void AGFAffine::setMg(qreal value) {
-	Mx = My = value;
+void AGFAffine::setMg(double value) {
+    Mx = My = value;
+    emit changed();
 }
 void AGFAffine::setInvertX(bool value) {
     invertX = value;
+    emit changed();
 }
 void AGFAffine::setInvertY(bool value) {
     invertY = value;
+    emit changed();
 }
 
 //--------------------------------------------------------------------------------//

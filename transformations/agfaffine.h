@@ -17,13 +17,16 @@
  */
 #ifndef AGFAFFINE_H
 #define AGFAFFINE_H
+
+#include <QObject>
 #include <QPointF>
 
 /**
  * Класс представляющий из себя систему аффинных преобразований
  */
-class AGFAffine
+class AGFAffine : public QObject
 {
+    Q_OBJECT
 protected:
     /**
      * @var Координаты начала осей X и Y
@@ -74,22 +77,6 @@ public:
 
     //--------------------------------------------------------------------------------//
     /**
-     * Методы-аксессоры set
-     */
-    void setX0(qreal value);
-    void setY0(qreal value);
-    void setXx(qreal value);
-    void setXy(qreal value);
-    void setYx(qreal value);
-    void setYy(qreal value);
-    void setMx(qreal value);
-    void setMy(qreal value);
-	void setMg(qreal value);
-    void setInvertX(bool value);
-    void setInvertY(bool value);
-
-    //--------------------------------------------------------------------------------//
-    /**
      * Методы-аксессоры get
      */
     qreal getX0() const;
@@ -103,6 +90,26 @@ public:
 
     bool getInvertX() const;
     bool getInvertY() const;
+
+//--------------------------------------------------------------------------------//
+public slots:
+    /**
+     * Методы-аксессоры set
+     */
+    void setX0(double value);
+    void setY0(double value);
+    void setXx(double value);
+    void setXy(double value);
+    void setYx(double value);
+    void setYy(double value);
+    void setMx(double value);
+    void setMy(double value);
+    void setMg(double value);
+    void setInvertX(bool value);
+    void setInvertY(bool value);
+
+signals:
+    void changed();
 };
 
 #endif // AGFAFFINE_H

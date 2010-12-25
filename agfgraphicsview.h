@@ -21,10 +21,9 @@
 #include <QGraphicsView>
 #include <QWheelEvent>
 #include "items/agfgrid.h"
-
-class AGFAffine;
-class AGFEuclidean;
-class AGFProjective;
+#include "AGF/transformations/agfaffine.h"
+#include "AGF/transformations/agfeuclidean.h"
+#include "AGF/transformations/agfprojective.h"
 
 /**
  * Класс виджета для рисования.
@@ -33,13 +32,6 @@ class AGFGraphicsView: public QGraphicsView
 {
     Q_OBJECT
 protected:
-    /**
-     * @var Объекты систем преобразований
-     */
-    AGFAffine* affine;
-    AGFEuclidean* euclidean;
-    AGFProjective* projective;
-
     /**
      * @var Цвет фона сцены
      */
@@ -56,8 +48,16 @@ protected:
      * @var Координата центра сцены
      */
     QPointF center;
+
 public:
     AGFGraphicsView(QWidget* parent = 0);
+
+    /**
+     * @var Объекты систем преобразований
+     */
+    AGFAffine* affine;
+    AGFEuclidean* euclidean;
+    AGFProjective* projective;
 
     /**
      * Добавляет новый элемент (объект для прорисовки) в сцену
@@ -102,56 +102,18 @@ signals:
     void zoomedOut();
 
 public slots:
+    void updateScene();
+
     void setEuclideanEnabled(bool value);
     void setAffineEnabled(bool value);
     void setProjectiveEnabled(bool value);
 
-    void setMx(double value);
-    void setMy(double value);
-    void setMg(double value);
 
-    void setAlphaDegree(double value);
-    void setBetaDegree(double value);
-    void setGammaDegree(double value);
-
-    void setXShift(double value);
-    void setYShift(double value);
-
-    void setAffineXx(double value);
-    void setAffineYx(double value);
-    void setAffineXy(double value);
-    void setAffineYy(double value);
-
-    void setAffineX0(double value);
-    void setAffineY0(double value);
-
-    void setInvertX(bool value);
-    void setInvertY(bool value);
-
-    void setProjectiveXx(double value);
-    void setProjectiveYx(double value);
-    void setProjectiveXy(double value);
-    void setProjectiveYy(double value);
-
-    void setProjectiveX0(double value);
-    void setProjectiveY0(double value);
-
-    void setProjectiveW0(int value);
-    void setProjectiveWx(double value);
-    void setProjectiveWy(double value);
 
     void setCenterX(double value);
     void setCenterY(double value);
-    //--------------------------------------------------------------------------------//
-    /**
-     * Методы-аксессоры get
-     */
 
 public:
-    AGFAffine* getAffine() const;
-    AGFEuclidean* getEuclidean() const;
-    AGFProjective* getProjective() const;
-
     bool getEuclideanEnabled() const;
     bool getAffineEnabled() const;
     bool getProjectiveEnabled() const;

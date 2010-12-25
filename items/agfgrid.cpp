@@ -16,7 +16,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "agfgrid.h"
-#include <QGraphicsScene>
 
 AGFGrid::AGFGrid(QGraphicsItem* parent): AGFGraphicsItem(parent) {
     setQuarterVisible(1, true);

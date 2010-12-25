@@ -17,7 +17,9 @@
  */
 #include "agfeuclidean.h"
 #include <cmath>
+
 using namespace std;
+
 AGFEuclidean::AGFEuclidean() {
     setXShift(0);
     setYShift(0);
@@ -49,20 +51,25 @@ QPointF AGFEuclidean::rotate(QPointF point) {
 /**
  * Методы-аксессоры set для полей
  */
-void AGFEuclidean::setXShift(qreal value) {
+void AGFEuclidean::setXShift(double value) {
     xShift = value;
+    emit changed();
 }
-void AGFEuclidean::setYShift(qreal value) {
+void AGFEuclidean::setYShift(double value) {
     yShift = value;
+    emit changed();
 }
-void AGFEuclidean::setAlpha(qreal value) {
+void AGFEuclidean::setAlpha(double value) {
     alpha = value;
+    emit changed();
 }
-void AGFEuclidean::setBeta(qreal value) {
+void AGFEuclidean::setBeta(double value) {
     beta = value;
+    emit changed();
 }
-void AGFEuclidean::setGamma(qreal value) {
+void AGFEuclidean::setGamma(double value) {
     gamma = value;
+    emit changed();
 }
 
 //--------------------------------------------------------------------------------//

@@ -17,13 +17,16 @@
  */
 #ifndef AGFEUCLIDEAN_H
 #define AGFEUCLIDEAN_H
+
+#include <QObject>
 #include <QPointF>
 
 /**
  * Класс представляющий из себя систему эвклидовых преобразований
  */
-class AGFEuclidean
+class AGFEuclidean : public QObject
 {
+    Q_OBJECT
 protected:
     /**
      * @var Сдвиг по осям X и Y
@@ -57,16 +60,6 @@ public:
 
     //--------------------------------------------------------------------------------//
     /**
-     * Методы-аксессоры set
-     */
-    void setXShift(qreal value);
-    void setYShift(qreal value);
-    void setAlpha(qreal value);
-    void setBeta(qreal value);
-    void setGamma(qreal value);
-
-    //--------------------------------------------------------------------------------//
-    /**
      * Методы-аксессоры get
      */
     qreal getXShift() const;
@@ -74,6 +67,21 @@ public:
     qreal getAlpha() const;
     qreal getBeta() const;
     qreal getGamma() const;
+
+public slots:
+    //--------------------------------------------------------------------------------//
+    /**
+     * Методы-аксессоры set
+     */
+    void setXShift(double value);
+    void setYShift(double value);
+    //значения параметров задаются в радианах:
+    void setAlpha(double value);
+    void setBeta(double value);
+    void setGamma(double value);
+
+signals:
+    void changed();
 };
 
 #endif // AGFEUCLIDEAN_H

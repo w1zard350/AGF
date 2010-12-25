@@ -53,30 +53,39 @@ QPointF AGFProjective::transform(QPointF point) {
  */
 void AGFProjective::setX0(qreal value) {
     x0 = value;
+    emit changed();
 }
 void AGFProjective::setY0(qreal value) {
     y0 = value;
+    emit changed();
 }
 void AGFProjective::setXx(qreal value) {
     Xx = value;
+    emit changed();
 }
 void AGFProjective::setYx(qreal value) {
     Yx = value;
+    emit changed();
 }
 void AGFProjective::setXy(qreal value) {
     Xy = value;
+    emit changed();
 }
 void AGFProjective::setYy(qreal value) {
     Yy = value;
+    emit changed();
 }
-void AGFProjective::setW0(qreal value) {
+void AGFProjective::setW0(int value) {
     W0 = value;
+    emit changed();
 }
 void AGFProjective::setWx(qreal value) {
     Wx = value;
+    emit changed();
 }
 void AGFProjective::setWy(qreal value) {
     Wy = value;
+    emit changed();
 }
 
 //--------------------------------------------------------------------------------//

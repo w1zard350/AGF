@@ -17,13 +17,16 @@
  */
 #ifndef AGFPROJECTIVE_H
 #define AGFPROJECTIVE_H
+
+#include <QObject>
 #include <QPointF>
 
 /**
  * Класс представляющий из себя систему аффинных преобразований
  */
-class AGFProjective
+class AGFProjective : public QObject
 {
+    Q_OBJECT
 protected:
     /**
      * @var Координаты начала осей X и Y
@@ -62,20 +65,6 @@ public:
 
     //--------------------------------------------------------------------------------//
     /**
-     * Методы-аксессоры set
-     */
-    void setX0(qreal value);
-    void setY0(qreal value);
-    void setXx(qreal value);
-    void setXy(qreal value);
-    void setYx(qreal value);
-    void setYy(qreal value);
-    void setW0(qreal value);
-    void setWx(qreal value);
-    void setWy(qreal value);
-
-    //--------------------------------------------------------------------------------//
-    /**
      * Методы-аксессоры get
      */
     qreal getX0() const;
@@ -87,6 +76,24 @@ public:
     qreal getW0() const;
     qreal getWx() const;
     qreal getWy() const;
+
+public slots:
+    //--------------------------------------------------------------------------------//
+    /**
+     * Методы-аксессоры set
+     */
+    void setX0(qreal value);
+    void setY0(qreal value);
+    void setXx(qreal value);
+    void setXy(qreal value);
+    void setYx(qreal value);
+    void setYy(qreal value);
+    void setW0(int value);
+    void setWx(double value);
+    void setWy(double value);
+
+signals:
+    void changed();
 };
 
 #endif // AGFPROJECTIVE_H

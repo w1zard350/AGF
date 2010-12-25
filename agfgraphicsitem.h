@@ -19,6 +19,7 @@
 #define AGFGRAPHICSITEM_H
 
 #include <QGraphicsItem>
+#include <QGraphicsScene>
 #include <QPainter>
 
 class AGFGraphicsView;
